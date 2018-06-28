@@ -1,0 +1,11 @@
+---
+# tasks file for ansible-performance-tuning
+
+- include_tasks: debian.yml
+  when: ansible_os_family == "Debian"
+
+- include_tasks: redhat.yml
+  when: ansible_os_family == "RedHat"
+
+- include_tasks: system.yml
+  when: performance_tuning_sysctl_settings != {}

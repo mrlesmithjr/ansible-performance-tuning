@@ -1,0 +1,8 @@
+---
+- name: system | Tuning sysctl Settings
+  sysctl:
+    name: "{{ item }}"
+    value: "{{ performance_tuning_sysctl_settings[item]['value'] }}"
+    state: "{{ performance_tuning_sysctl_settings[item]['state'] }}"
+  become: true
+  with_items: "{{ performance_tuning_sysctl_settings }}"

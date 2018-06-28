@@ -1,0 +1,9 @@
+---
+- name: redhat | Updating Grub Timeout
+  lineinfile:
+    path: /etc/default/grub
+    regexp: "^GRUB_TIMEOUT"
+    line: "GRUB_TIMEOUT={{ performance_tuning_grub_timeout }}"
+  become: true
+  notify: grub2-mkconfig
+  when: performance_tuning_grub_config
